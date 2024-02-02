@@ -24,7 +24,7 @@ func runCommand(command string, wg *sync.WaitGroup) {
 func main() {
 	var wg sync.WaitGroup
 
-	load := "pactl load-module module-pipe-source source_name=virtual file=irtual.wav format=s16le rate=30000 channels=1"
+	load := "pactl load-module module-pipe-source source_name=virtual file=virtual.wav format=s16le rate=30000 channels=1"
 	setting1 := "pactl set-default-source virtual"
 	//the following two to prevent the ticking.
 	volume := "pactl set-source-volume alsa_input.pci-0000_00_1b.0.analog-stereo 65535" // 100%
