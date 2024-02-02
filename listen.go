@@ -24,13 +24,13 @@ func runCommand(command string, wg *sync.WaitGroup) {
 func main() {
 	var wg sync.WaitGroup
 
-	load := "pactl load-module module-pipe-source source_name=virtual file=/home/jordan/Desktop/virtual.wav format=s16le rate=30000 channels=1"
+	load := "pactl load-module module-pipe-source source_name=virtual file=irtual.wav format=s16le rate=30000 channels=1"
 	setting1 := "pactl set-default-source virtual"
 	//the following two to prevent the ticking.
 	volume := "pactl set-source-volume alsa_input.pci-0000_00_1b.0.analog-stereo 65535" // 100%
 	//volume2 := "pactl set-source-output-volume virtual 43690"                         // 75%
 
-	play := "ffmpeg -re -i /home/jordan/Desktop/legal_acknowledgment.wav -f s16le -ar 30000 -filter:a 'volume=1.0' -ac 1 - > /home/jordan/Desktop/virtual.wav"
+	play := "ffmpeg -re -i legal_acknowledgment.wav -f s16le -ar 30000 -filter:a 'volume=1.0' -ac 1 - > virtual.wav"
 	mute := "pactl set-source-mute alsa_input.pci-0000_00_1b.0.analog-stereo toggle" // muted for tick collapse
 	setting2 := "pactl set-default-source alsa_input.pci-0000_00_1b.0.analog-stereo"
 	unmute := "pactl set-source-mute alsa_input.pci-0000_00_1b.0.analog-stereo toggle" // unmuted regular
